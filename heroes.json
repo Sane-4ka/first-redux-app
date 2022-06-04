@@ -1,0 +1,50 @@
+{
+  "heroes": [
+    {
+      "id": 6,
+      "name": "Морской гй",
+      "description": "Как аквамен, но не из DC",
+      "element": "water"
+    },
+    {
+      "id": "a18b1210-592f-40e3-a8a5-08aa0632faa2",
+      "name": "rtyertyryrtyrtyrty",
+      "description": "rtyerty",
+      "element": "fire"
+    },
+    {
+      "id": "687c6c5a-a629-4570-878b-d5cc6b1a1085",
+      "name": "uhbrujhbq",
+      "description": "fsfgdfg",
+      "element": "wind"
+    },
+    {
+      "id": "42a80f8e-71ca-499a-baee-ef8fa357643f",
+      "name": "dfghhgf",
+      "description": "dghg",
+      "element": "earth"
+    }
+  ],
+  "filters": [
+    {
+      "elem": "all",
+      "className": "btn-outline-dark"
+    },
+    {
+      "elem": "fire",
+      "className": "btn-danger"
+    },
+    {
+      "elem": "water",
+      "className": "btn-primary"
+    },
+    {
+      "elem": "wind",
+      "className": "btn-success"
+    },
+    {
+      "elem": "earth",
+      "className": "btn-secondary"
+    }
+  ]
+}
