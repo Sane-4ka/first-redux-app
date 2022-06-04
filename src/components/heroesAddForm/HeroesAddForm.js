@@ -51,8 +51,9 @@ const HeroesAddForm = () => {
         }
 
         if (filters && filters.length > 0) {
+            
             return filters.map((filter, i) => {
-                if (name === 'all'){
+                if (filter.elem === 'all'){
                     return;
                 } else {
                 return <option key={i} value={filter.elem}>{filter.elem}</option>
