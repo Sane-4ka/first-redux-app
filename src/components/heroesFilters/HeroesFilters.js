@@ -1,14 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
-import { activeFilterChanged, fetchFilters } from './filtersSlice'
 import { useEffect} from 'react'
 import { useHttp } from "../../hooks/http.hook";
+import store from "../../store";
 import Spinner from "../spinner/Spinner";
+
+import { activeFilterChanged, fetchFilters, selectAll } from './filtersSlice'
 
 const HeroesFilters = () => {
 
-    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state.filters);
+    const {filtersLoadingStatus, activeFilter} = useSelector(state => state.filters);
+    const filters = selectAll(store.getState())
+    console.log(store.getState());
     const dispatch = useDispatch();
-
+    const {request} = useHttp();
     // const [attr, setAttr] = useState();
 
     // const onFilter = (e) => {
@@ -47,7 +51,7 @@ const HeroesFilters = () => {
     // }
 
     useEffect(() => {
-        dispatch(fetchFilters())
+        dispatch(fetchFilters(request))
     }, []);
 
     if (filtersLoadingStatus === "loading") {
@@ -57,6 +61,7 @@ const HeroesFilters = () => {
     }
 
     const renderFilters = (arr) => {
+        
         if (arr.length === 0) {
             return <h5 className="text-center mt-5">Фильтры не найдены</h5>
         }
@@ -70,7 +75,8 @@ const HeroesFilters = () => {
                         onClick={() => dispatch(activeFilterChanged(elem))}
                         >{elem}</button>
         })
-    }
+    } 
+
     const elements = renderFilters(filters);
 
     return (

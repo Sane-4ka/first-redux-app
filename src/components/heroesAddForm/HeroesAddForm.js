@@ -3,24 +3,18 @@ import { useState, useEffect } from "react";
 import { useHttp } from "../../hooks/http.hook";
 import { addHero } from '../heroesList/heroesSlice';
 import { v4 as uuidv4 } from 'uuid';
+import { selectAll } from "../heroesFilters/filtersSlice";
+import store from "../../store";
 
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
 
 const HeroesAddForm = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [element, setElement] = useState('');
 
-    const {filters, filtersLoadingStatus} = useSelector(state => state.filters);
+    const {filtersLoadingStatus} = useSelector(state => state.filters);
     const dispatch = useDispatch();
+    const filters = selectAll(store.getState());
     const {request} = useHttp();
 
     const onSubmitHandler = (e) => {
